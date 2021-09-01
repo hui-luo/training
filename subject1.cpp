@@ -21,13 +21,13 @@ int input()
         return i;
     }
     
-    while (ifs >> Question[i])
+    while (ifs >> Question[i])            
     {
         cout << Question[i] << endl;
         i++;
     }
     // cout << i << endl;
-    return i;
+    return i;                                   //返回有多少行数据
 }
 
 void calculate(int num)
