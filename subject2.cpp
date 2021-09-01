@@ -89,8 +89,8 @@ int main ()
             {
                 select(info,number,wh);
                 for (int i = 0; i < number; i++)
-                {
-                    decide[i] = 1;
+                {                                                //标记是否可以输出
+                    decide[i] = 1;                              //初始化
                 }
                 
                 for (int i = wh+1; i < count; i++)
@@ -315,6 +315,14 @@ void select(string info[],int num1,int num2)
                 pri[j] = pri[j] + " " + score[j];
             }
         }
+        else if (info[i].compare("*") == 0)
+        {
+            for (int j = 0; j < num1; j++)
+            {
+                pri[j] = pri[j] + " " + ID[j] + " " + name[j] + " " + sex[j] + " " + adress[j] +" "+ birthday[j] + " " + score[j];
+            }
+        }
+        
     }
     
 }
