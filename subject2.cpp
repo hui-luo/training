@@ -95,10 +95,9 @@ int main ()
                 
                 for (int i = wh+1; i < count; i++)
                 {
-                    if(info[i].find("sex") != string::npos)    
+                    if(info[i].find("sex=Female") != string::npos)    
                     {
-                        while (info[i].find('F') != string::npos)
-                        {
+                        
                            for (int j = 0; j < number; j++)
                            {
                                if (sex[j].compare("男") == 0)
@@ -106,20 +105,19 @@ int main ()
                                    decide[j] = 0;
                                }
                            }
-                           break;
-                        }
-                        while (info[i].find('M') != string::npos)
-                        {
-                            for (int j = 0; j < number; i++)
+                      
+                    }
+                    if (info[i].find("sex=male") != string::npos)
+                    {
+                        for (int j = 0; j < number; j++)
                            {
                                if (sex[j].compare("女") == 0)
                                {
                                    decide[j] = 0;
                                }
                            }
-                           break;
-                        }
-                    }      
+                    }
+                          
                     if (info[i].find("score") != string::npos)
                     {
                         if (info[i].find(">") != string::npos)
