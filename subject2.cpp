@@ -37,7 +37,7 @@ int main ()
     int wh;
     string info[Max];
     int count = 0;
-    int judge = 0;   //判断有无adress
+    int judge;   //判断有无条件
 	string token;
     string size;
     do
@@ -74,11 +74,11 @@ int main ()
                 info[count] = token;
                 count++; 
             }
+            judge = 0;                       //判断字符串中有无where
             for (int i = 0; i < count; i++)
             {
                 if (info[i].compare("where") == 0)
                 {
-
                     judge = 1;
                     wh = i;
                     break;
@@ -97,25 +97,27 @@ int main ()
                 {
                     if(info[i].find("sex") != string::npos)    
                     {
-                        if (info[i].find("man") != string::npos)
+                        while (info[i].find('F') != string::npos)
                         {
                            for (int j = 0; j < number; j++)
-                           {
-                               if (sex[j].compare("女") == 0)
-                               {
-                                   decide[j] = 0;
-                               }
-                           }
-                        }
-                        else
-                        {
-                            for (int j = 0; j < count; i++)
                            {
                                if (sex[j].compare("男") == 0)
                                {
                                    decide[j] = 0;
                                }
                            }
+                           break;
+                        }
+                        while (info[i].find('M') != string::npos)
+                        {
+                            for (int j = 0; j < number; i++)
+                           {
+                               if (sex[j].compare("女") == 0)
+                               {
+                                   decide[j] = 0;
+                               }
+                           }
+                           break;
                         }
                     }      
                     if (info[i].find("score") != string::npos)
@@ -125,7 +127,7 @@ int main ()
                             size = info[i].substr(info[i].find(">")+1,2);
                             for (int j = 0; j < number; j++)
                             {
-                                if (score[j] < size)
+                                if (score[j] <= size)
                                 {
                                     decide[j] = 0;
                                 }
@@ -136,7 +138,7 @@ int main ()
                             size = info[i].substr(info[i].find("<")+1,2);
                             for (int j = 0; j < number; j++)
                             {
-                                if (score[j] > size)
+                                if (score[j] >= size)
                                 {
                                     decide[j] = 0;
                                 }
@@ -174,10 +176,10 @@ void help()
     cout << "按“成绩”排序，并显示" << endl;
     cout << "select_ID_name" << endl;
     cout << "只显示学号、姓名两列，显示的列还可以其他的任意" << endl;
-    cout << "select_ID_name adress score > 60" << endl;
+    cout << "select_ID_name_adress_where_score>60" << endl;
     cout << "只显示学号、姓名两列，只包含成绩>60的行" << endl;
-    cout << "select_*_adress_score>60_sex=man" << endl;
-    cout << "只显示姓名、学号两列，只包含成绩>60且性别为男的行" << endl;
+    cout << "select_*_where_score>60_sex=man" << endl;
+    cout << "显示所以列，只包含成绩>60且性别为男的行" << endl;
     cout << "其他组合，从上边类推" << endl;
     cout << "exit" << endl;
     cout << "退出程序" << endl;    
